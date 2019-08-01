@@ -9,9 +9,9 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: wpdb
+      MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
-      MYSQL_PASSWORD: sqlpass
+      MYSQL_PASSWORD: sqlpassword
     networks:
       - wpsite
   # phpmyadmin
@@ -33,13 +33,13 @@ services:
       - db
     image: wordpress:latest
     ports:
-      - '80:80'
+      - '8000:80'
     restart: always
     volumes: ['./:/var/www/html']
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: sqlpass
+      WORDPRESS_DB_PASSWORD: sqlpassword
     networks:
       - wpsite
 networks:
